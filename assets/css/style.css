@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.tabCelPreta{
+    background-color: rgb(148, 225, 147);
+}
+
+.tabCelBranca {
+    background-color: rgb(186, 230, 215);
+}
+
+
+
+.celulaTd {
+    width: 20px;
+    height: 20px;
+    background-color: aqua;
+    border: black solid 1px;
+}

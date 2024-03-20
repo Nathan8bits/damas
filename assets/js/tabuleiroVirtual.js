@@ -43,10 +43,20 @@ export class TabuleiroDamaJs {
         }
     }
 
-    movimentosPosiveis() {
 
-        
 
-        return movPossiveis;
+    movimentoPosssiveis() {
+        for (let x = -1; x < 2; x++) {
+            for(let y = -1; y < 2; y++) {
+
+            }
+        }
+    }
+
+    opcaoValida() {
+
+
+
+        return true;
     }
 }

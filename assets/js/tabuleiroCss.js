@@ -28,8 +28,9 @@ function criarTabuleiro() {
         
         for(let x = 0; x < 8; x++) {
             const celula = document.createElement("td");
-            celula.setAttribute("class", "celulaTd")
-            celula.innerHTML = `{${x},${y}}`;
+            celula.setAttribute("class", "celulaTd");
+            //celula.setAttribute("class", "tabCelPreta");
+            //celula.innerHTML = `{${x},${y}}`;
             //celula.innerHTML = '█';
             linha.appendChild(celula)
         }
