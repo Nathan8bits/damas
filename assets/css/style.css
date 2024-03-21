@@ -5,21 +5,27 @@
 
 body{
     background-color: antiquewhite;
+    color: rgb(255, 255, 255);
+}
+
+.pecaPreta {
+    color: rgb(0, 0, 0);
+}
+
+.pecaBranca {
+    color: rgb(255, 255, 255);
 }
 
 .tabCelPreta{
-    background-color: rgb(148, 225, 147);
+    background-color: rgb(15, 178, 6);
 }
 
 .tabCelBranca {
-    background-color: rgb(186, 230, 215);
+    background-color: rgb(255, 255, 255);
 }
-
-
 
 .celulaTd {
     width: 20px;
     height: 20px;
-    background-color: aqua;
     border: black solid 1px;
 }

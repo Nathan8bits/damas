@@ -5,10 +5,19 @@ export let tabuCss = {
     peca: criarTabuleiro(),
     //peça e destino
     posicionar: (peca, posiCss) => {
-        tabuCss.peca[posiCss[1]*8 + posiCss[0]].innerHTML = peca.jogador;
+        let pecaHtml = document.createElement("i");
+        //fa-solid fa-circle pecaBranca
+        if(peca.jogador == "a") { //peças pretas
+            pecaHtml.classList.add("fa-solid", "fa-circle", "pecaPreta");
+        } else if (peca.jogador == "b") {
+            pecaHtml.classList.add("fa-solid", "fa-circle", "pecaBranca");
+        }
+        tabuCss.peca[posiCss[1]*8 + posiCss[0]].appendChild(pecaHtml);
+        //tabuCss.peca[posiCss[1]*8 + posiCss[0]].innerHTML = peca.jogador;
     },
     posicionarTodas: (peca) => {
         for(let i = 0; i < 24; i++) {
+            console.log(`posicionarAll: ${i} p: ${peca[i].posicao[0]}, ${peca[i].posicao[1]};`)
             tabuCss.posicionar(peca[i], 
                 [peca[i].posicao[0], peca[i].posicao[1]]);
         }
@@ -28,7 +37,20 @@ function criarTabuleiro() {
         
         for(let x = 0; x < 8; x++) {
             const celula = document.createElement("td");
-            celula.setAttribute("class", "celulaTd");
+            //celula.setAttribute("class", "celulaTd");
+            celula.classList.add("celulaTd");
+            //celula.setAttribute("class", "tabCelPreta");
+           // celula.classList.add("tabCelPreta");
+            
+            if( y%2 == 0 && x%2 == 1) {
+                celula.classList.add("tabCelPreta");
+            } else if( y%2 == 0 && x%2 == 0) {
+                celula.classList.add("tabCelBranca");
+            } else if ( y%2 == 1 && x%2 ==1) {
+                celula.classList.add("tabCelBranca");
+            } else if (y%2==1 && x%2 == 0) {
+                celula.classList.add("tabCelPreta");
+            } 
             //celula.setAttribute("class", "tabCelPreta");
             //celula.innerHTML = `{${x},${y}}`;
             //celula.innerHTML = '█';
