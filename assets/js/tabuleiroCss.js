@@ -2,8 +2,9 @@ export let tabuCss = {
     //criarTabuleiro: criarTabuleiro(),
     pecasHtml: [24],
     celulasHtml: criarTabuleiro(),
-    //peça e destino
+    //peça(objVir) e destino[x, y]
     posicionar: (peca, posiCss) => {
+        console.log("posicionar");
         console.log(`posicao peca: ${peca.posicao}`);
 
         let pecaHtml = document.createElement("i");
@@ -17,7 +18,7 @@ export let tabuCss = {
         peca.posicao[0] = posiCss[0];
         peca.posicao[1] = posiCss[1];
 
-        console.log(`nova posicao peca: ${peca.posicao}`);
+        //console.log(`nova posicao peca: ${peca.posicao}`);
         //mudando no html
         tabuCss.celulasHtml[posiCss[1]*8 + posiCss[0]].appendChild(pecaHtml);
         //tabuCss.peca[posiCss[1]*8 + posiCss[0]].innerHTML = peca.jogador;
@@ -33,13 +34,12 @@ export let tabuCss = {
     },
 
     reposicionar: (index, peca, destino) => {
-        let todasPecas = document.querySelectorAll(".fa-circle");
+        console.log("reposicionar");
+        console.log(index, peca, destino, tabuCss.pecasHtml[index])
 
-        if(todasPecas[index]) {
-            todasPecas[index].parentElement.removeChild(todasPecas[index]);
-        }
-
+        tabuCss.pecasHtml[index].parentElement.removeChild(tabuCss.pecasHtml[index]);
         tabuCss.posicionar(peca, destino);
+        
     },
 }
 
