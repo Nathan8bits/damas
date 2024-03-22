@@ -54,9 +54,17 @@ export class TabuleiroDamaJs {
     }
 
     opcaoValida() {
-
-
-
         return true;
+    }
+
+    retornarIndex(posicao) {
+        for(let i = 0; i < 24; i++) {
+            if(this._peca[i].posicao == posicao) {
+
+                return i
+            }
+        }
+
+        return [-1, -1];
     }
 }

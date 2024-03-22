@@ -1,10 +1,11 @@
-let tabuCssInicializado = false;
-
 export let tabuCss = {
     //criarTabuleiro: criarTabuleiro(),
-    peca: criarTabuleiro(),
+    pecasHtml: [24],
+    celulasHtml: criarTabuleiro(),
     //peça e destino
     posicionar: (peca, posiCss) => {
+        console.log(`posicao peca: ${peca.posicao}`);
+
         let pecaHtml = document.createElement("i");
         //fa-solid fa-circle pecaBranca
         if(peca.jogador == "a") { //peças pretas
@@ -12,20 +13,37 @@ export let tabuCss = {
         } else if (peca.jogador == "b") {
             pecaHtml.classList.add("fa-solid", "fa-circle", "pecaBranca");
         }
-        tabuCss.peca[posiCss[1]*8 + posiCss[0]].appendChild(pecaHtml);
+        //atualizando posicao da peça
+        peca.posicao[0] = posiCss[0];
+        peca.posicao[1] = posiCss[1];
+
+        console.log(`nova posicao peca: ${peca.posicao}`);
+        //mudando no html
+        tabuCss.celulasHtml[posiCss[1]*8 + posiCss[0]].appendChild(pecaHtml);
         //tabuCss.peca[posiCss[1]*8 + posiCss[0]].innerHTML = peca.jogador;
     },
     posicionarTodas: (peca) => {
         for(let i = 0; i < 24; i++) {
-            console.log(`posicionarAll: ${i} p: ${peca[i].posicao[0]}, ${peca[i].posicao[1]};`)
+            //console.log(`posicionarAll: ${i} p: ${peca[i].posicao[0]}, ${peca[i].posicao[1]};`)
             tabuCss.posicionar(peca[i], 
                 [peca[i].posicao[0], peca[i].posicao[1]]);
         }
+
+        tabuCss.pecasHtml = document.querySelectorAll(".fa-circle");
+    },
+
+    reposicionar: (index, peca, destino) => {
+        let todasPecas = document.querySelectorAll(".fa-circle");
+
+        if(todasPecas[index]) {
+            todasPecas[index].parentElement.removeChild(todasPecas[index]);
+        }
+
+        tabuCss.posicionar(peca, destino);
     },
 }
 
 function criarTabuleiro() {
-    
     //const componentRoot = document.createElement("div");
     //componentRoot.setAttribute("class", "mapa");
     //let matrizCssFunction  = document.querySelector(".mapa");
@@ -61,7 +79,7 @@ function criarTabuleiro() {
     }
     document.querySelector(".mapa").appendChild(matrizMapa);
     
-    return document.querySelectorAll(".celulaTd");
+    return document.querySelectorAll(".celulaTd");//array 64 posicoes
 }
 
 /*
