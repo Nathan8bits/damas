@@ -34,11 +34,17 @@ export let tabuCss = {
     },
 
     reposicionar: (index, peca, destino) => {
-        console.log("reposicionar");
+        console.log("posicionar");
+        console.log(`posicao peca: ${peca.posicao}`);
         console.log(index, peca, destino, tabuCss.pecasHtml[index])
 
-        tabuCss.pecasHtml[index].parentElement.removeChild(tabuCss.pecasHtml[index]);
-        tabuCss.posicionar(peca, destino);
+         //atualizando posicao da peça
+         peca.posicao[0] = destino[0];
+         peca.posicao[1] = destino[1];
+ 
+         //console.log(`nova posicao peca: ${peca.posicao}`);
+         //mudando no html
+         tabuCss.celulasHtml[destino[1]*8 + destino[0]].appendChild(tabuCss.pecasHtml[index]);
         
     },
 }
