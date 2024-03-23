@@ -8,6 +8,11 @@ body{
     color: rgb(255, 255, 255);
 }
 
+.fa-circle {
+    font-size: 16px;
+    margin: 2px;
+}
+
 .pecaPreta {
     color: rgb(226, 51, 51);
 }
@@ -29,3 +34,4 @@ body{
     height: 20px;
     border: black solid 1px;
 }
+
