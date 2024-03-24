@@ -2,7 +2,7 @@ import {TabuleiroDamaJs} from './tabuleiroVirtual.js'
 import { tabuCss } from './tabuleiroCss.js';
 
 const tabuVir = new TabuleiroDamaJs();
-tabuCss.posicionarTodas(tabuVir._peca);
+tabuCss.resetarTodasPecas(tabuVir._peca);
 console.log(tabuVir);
 console.log(tabuCss);
 
@@ -21,7 +21,7 @@ for(let i = 0; i < 64; i++) {
 
         if(pecaClicada.peca.posicao != [i%8, (i - (i%8))/8]
             && pecaClicada.peca != 0 ) {
-                tabuCss.reposicionar(pecaClicada.index, 
+                tabuCss.posicionar(pecaClicada.index, 
                                     pecaClicada.peca, 
                                     [i%8, (i - (i%8))/8]);
         }
@@ -49,4 +49,4 @@ for(let i =0; i < 24; i++) {
  console.log("(main)peca: " + tabuVir._peca[0].posicao)
  
  let p = [2, 4]
- tabuCss.reposicionar(pecaClicada.index, tabuVir._peca[0], p)
+ tabuCss.posicionar(pecaClicada.index, tabuVir._peca[0], p)

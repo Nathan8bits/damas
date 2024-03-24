@@ -4,21 +4,29 @@
 }
 
 body{
+    height: 100vh;
     background-color: antiquewhite;
     color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapa{
+    background-color: aqua;
 }
 
 .fa-circle {
-    font-size: 16px;
-    margin: 2px;
+    font-size: 3vh;
+    margin: 1vh;
 }
 
 .pecaPreta {
-    color: rgb(226, 51, 51);
+    color: rgb(21, 74, 190);
 }
 
 .pecaBranca {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 65, 65);
 }
 
 .tabCelPreta{
@@ -30,8 +38,7 @@ body{
 }
 
 .celulaTd {
-    width: 20px;
-    height: 20px;
+    width: 5vh;
+    height: 5vh;
     border: black solid 1px;
 }
-
