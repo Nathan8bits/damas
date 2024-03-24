@@ -10,6 +10,7 @@ console.log(tabuCss);
 let pecaClicada = {
     peca: 0,
     index: 3,
+    movimentoPosssiveis: [],
 }
 
 //inicializando as celulas
@@ -18,12 +19,13 @@ for(let i = 0; i < 64; i++) {
         console.log(`celula: ${i%8}, ${(i - (i%8))/8}`);
         console.log(pecaClicada);
         //console.log(tabuCss.celulasHtml[ ((i - (i%8))/8)*8 + i%8].children.length)
-
+        
         if(pecaClicada.peca.posicao != [i%8, (i - (i%8))/8]
-            && pecaClicada.peca != 0 ) {
-                tabuCss.posicionar(pecaClicada.index, 
-                                    pecaClicada.peca, 
-                                    [i%8, (i - (i%8))/8]);
+        && pecaClicada.peca != 0 ) {
+            tabuCss.posicionar(pecaClicada.index, 
+                                            pecaClicada.peca, 
+                                            [i%8, (i - (i%8))/8]);
+            
         }
     })
 }
@@ -35,8 +37,9 @@ for(let i =0; i < 24; i++) {
         
         pecaClicada.peca = tabuVir._peca[i];
         pecaClicada.index = i;
-        
-        console.log(tabuVir.movimentoPosssiveis(i));
+        pecaClicada.movimentoPosssiveis = tabuVir.movimentoPosssiveis(i);
+
+        //console.log(tabuVir.movimentoPosssiveis(i));
         console.log(pecaClicada);
     })
 }
