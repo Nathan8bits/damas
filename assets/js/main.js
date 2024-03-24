@@ -17,7 +17,7 @@ for(let i = 0; i < 64; i++) {
     tabuCss.celulasHtml[i].addEventListener("click", ()=> {
         console.log(`celula: ${i%8}, ${(i - (i%8))/8}`);
         console.log(pecaClicada);
-        console.log(tabuCss.celulasHtml[ ((i - (i%8))/8)*8 + i%8].children.length)
+        //console.log(tabuCss.celulasHtml[ ((i - (i%8))/8)*8 + i%8].children.length)
 
         if(pecaClicada.peca.posicao != [i%8, (i - (i%8))/8]
             && pecaClicada.peca != 0 ) {
@@ -28,25 +28,15 @@ for(let i = 0; i < 64; i++) {
     })
 }
 
-console.log(tabuCss.pecasHtml);
-
 //inicializando as peças
 for(let i =0; i < 24; i++) {
     tabuCss.pecasHtml[i].addEventListener("click", () => {
         console.log("peça clicada")
         
         pecaClicada.peca = tabuVir._peca[i];
-        //pecaClicada.posicao[0] = tabuVir._peca[i].posicao[0];
-        //pecaClicada.posicao[1] = tabuVir._peca[i].posicao[1];
         pecaClicada.index = i;
-
-        console.log(tabuCss.pecasHtml[i])
+        
+        console.log(tabuVir.movimentoPosssiveis(i));
         console.log(pecaClicada);
     })
 }
-
-
- console.log("(main)peca: " + tabuVir._peca[0].posicao)
- 
- let p = [2, 4]
- tabuCss.posicionar(pecaClicada.index, tabuVir._peca[0], p)

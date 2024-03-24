@@ -43,6 +43,7 @@ function criarTabuleiro() {
                     || y%2 == 1 && x%2 ==1) {
                 celula.classList.add("tabCelBranca");
             } 
+            celula.innerHTML = `{${x}, ${y}}`
             linha.appendChild(celula)
         }
     

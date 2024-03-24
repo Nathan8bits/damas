@@ -44,27 +44,49 @@ export class TabuleiroDamaJs {
     }
 
 
-
-    movimentoPosssiveis() {
+    movimentoPosssiveis(index) {  //indexPeça
+        let moviPossiveis = [];
+        let indexMovPossiveis = -1;
         for (let x = -1; x < 2; x++) {
             for(let y = -1; y < 2; y++) {
-
+                if(x != 0 && y != 0 
+                    && this.opcaoValida([this._peca[index].posicao[0] + x, this._peca[index].posicao[1] + y])) {
+                        indexMovPossiveis++;
+                        moviPossiveis[indexMovPossiveis] = [this._peca[index].posicao[0] + x, this._peca[index].posicao[1] + y];
+                } else if(this.opcaoValida([this._peca[index].posicao[0] + 2*x, this._peca[index].posicao[1] + 2*y])
+                          && this.retornarJogador([this._peca[index].posicao[0] + x, this._peca[index].posicao[1] + y]) != null 
+                          && this.retornarJogador([this._peca[index].posicao[0] + x, this._peca[index].posicao[1] + y]) != this._peca[index].jogador) {
+                            indexMovPossiveis++;
+                            moviPossiveis[indexMovPossiveis] = [this._peca[index].posicao[0] + 2*x, this._peca[index].posicao[1] + 2*y];
+                }
             }
+        }
+
+        if(indexMovPossiveis == -1) {
+            return null;
+        } else {
+            return moviPossiveis;
         }
     }
 
-    opcaoValida() {
+    opcaoValida(p) {
+        for(let i = 0; i < 24; i++) {
+            if(this._peca[i].posicao[0] == p[0] && this._peca[i].posicao[1] == p[1] 
+                || p[0] < 0 || p[0] >= 8 || p[1] < 0 || p[1] >= 8){
+                return false;
+            }
+        }
+
         return true;
     }
 
-    retornarIndex(posicao) {
+    retornarJogador(p) {
         for(let i = 0; i < 24; i++) {
-            if(this._peca[i].posicao == posicao) {
-
-                return i
+            if(this._peca[i].posicao[0] == p[0] && this._peca[i].posicao[1] == p[1]){
+                return this._peca[i].jogador;
             }
         }
 
-        return [-1, -1];
+        return null;
     }
 }
